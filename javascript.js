@@ -1,3 +1,4 @@
+/* inisialisasi API ke variabel*/
 const API_KEY = 'api_key=7bd4ba386addb6d59d68fe73e949ae42';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY;
@@ -18,10 +19,10 @@ function getMovies(url) {
 }
 
 
-/*menunjukan data*/
+/*menunjukan data pada page*/
 function showMovies(data) {
     main.innerHTML = '';
-    /*loop thru the array to show all the data*/
+    /*loop thru the array to get the data*/
     data.forEach(movie => {
         const{title, poster_path, vote_average, overview} = movie;
         const movieEl = document.createElement('div');
@@ -65,5 +66,7 @@ form.addEventListener('submit', (e) => {
 
     if(searchTerm) {
         getMovies(searchURL+'&query='+searchTerm)
+    } else {
+        getMovies(API_URL);
     }
 })
